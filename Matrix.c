@@ -1,16 +1,47 @@
 #include "Matrix.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-struct Matrix{
-    int rows;
-    int cols;
-    int *matrix;
-};
 
-int MatrixValue(struct Matrix Mat, int row, int col) {
-    return Mat.matrix[row*Mat.cols+col];
+void MatrixInit(Matrix *Mat, int rows, int cols) {
+    Mat->rows = rows;
+    Mat->cols = cols;
+    Mat->matrix = (int *)malloc(rows * cols * sizeof(int));
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            MatrixEdit(Mat, i, j, 0);
+        }
+    }
 }
 
-void MatrixEdit(struct Matrix Mat, int row, int col, int value) {
-    Mat.matrix[row*Mat.cols+col] = value;
+int MatrixValue(Matrix *Mat, int row, int col) {
+    return Mat->matrix[row*Mat->cols+col];
+}
+
+void MatrixEdit(Matrix *Mat, int row, int col, int value) {
+    Mat->matrix[row*Mat->cols+col] = value;
+}
+
+void PrintMatrix(Matrix *Mat) {
+    for (int i = 0; i < Mat->rows; i++) {
+        for (int j = 0; j < Mat->cols; j++) {
+            printf("%d ", Mat->matrix[i*Mat->cols+j]);
+        }
+        printf("\n");
+    }
+}
+
+Matrix MultiplyMatrix(Matrix *Mat1, Matrix *Mat2) {
+    Matrix result;
+    if (Mat1->cols != Mat2->rows) {
+        printf("Matrix Multiplication Error");
+        exit(1);
+    }
+    MatrixInit(&result, Mat1->rows, Mat1->cols);
+
+    for (int i = 0; i < Mat1->rows; i++) {
+        for (int j = 0; j < Mat2->cols; j++) {
+
+        }
+    }
 }
