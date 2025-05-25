@@ -7,6 +7,17 @@ typedef struct {
     int *matrix;
 } Matrix;
 
+void VectorInit(Vector* Vector, int Length);
+}
+
+Vector VectorMultply(Vector vector, float Scalar) ;
+
+Vector VectorAdd(Vector vector1, Vector vector2);
+
+Vector VectorSubtract(Vector vector1, Vector vector2);
+
+float DotProduct(Vector vector1, Vector vector2) ;
+
 // 행렬 초기화
 void MatrixInit(Matrix *Mat, int rows, int cols);
 
