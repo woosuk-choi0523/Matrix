@@ -2,6 +2,48 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void VectorInit(Vector* Vector, int Length) {
+    Vector->length = Length;
+    Vector->Vector = (float*) malloc(Length * sizeof(float));
+    for (int i = 0; i < Length; i++) {
+        Vector->Vector[i] = 0;
+    }
+}
+
+Vector VectorMultply(Vector vector, float Scalar) {
+    Vector result;
+    VectorInit(&result, vector.length);
+    for (int i = 0; i < vector.length; i++) {
+        result.Vector[i] = vector.Vector[i] * Scalar;
+    }
+    return result;
+}
+
+Vector VectorAdd(Vector vector1, Vector vector2) {
+    Vector result;
+    VectorInit(&result, vector1.length);
+    for (int i = 0; i < vector1.length; i++) {
+        result.Vector[i] = vector1.Vector[i] + vector2.Vector[i];
+    }
+    return result;
+}
+
+Vector VectorSubtract(Vector vector1, Vector vector2) {
+    Vector result;
+    VectorInit(&result, vector1.length);
+    for (int i = 0; i < vector1.length; i++) {
+        result.Vector[i] = vector1.Vector[i] - vector2.Vector[i];
+    }
+    return result;
+}
+
+float DotProduct(Vector vector1, Vector vector2) {
+    float result = 0;
+    for (int i = 0; i < vector1.length; i++) {
+        result += vector1.Vector[i] * vector2.Vector[i];
+    }
+    return result;
+}
 
 void MatrixInit(Matrix *Mat, int rows, int cols) {
     Mat->rows = rows;
