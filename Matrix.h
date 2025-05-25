@@ -1,6 +1,15 @@
 #ifndef MATRIX_LIBRARY_H
 #define MATRIX_LIBRARY_H
 
+#define  MatrixMultiply(x, y)_Generic((y), \
+Matrix: MatrixMultiply_Mat, \
+Vector: MatrixMultiply_Vector)(x, y)
+
+typedef struct {
+    int length;
+    float* Vector;
+}Vector;
+
 typedef struct {
     int rows;
     int cols;
