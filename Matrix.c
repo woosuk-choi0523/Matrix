@@ -14,6 +14,15 @@ void MatrixInit(Matrix *Mat, int rows, int cols) {
     }
 }
 
+void MatrixFree(Matrix *Mat) {
+    if (Mat->matrix != NULL) {
+        free(Mat->matrix);
+        Mat->matrix = NULL;
+    }
+    Mat->rows = 0;
+    Mat->cols = 0;
+}
+
 int MatrixValue(Matrix Mat, int row, int col) {
     return Mat.matrix[row*Mat.cols+col];
 }
