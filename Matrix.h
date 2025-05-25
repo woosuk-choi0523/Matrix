@@ -3,7 +3,7 @@
 
 #define  MatrixMultiply(x, y)_Generic((y), \
 Matrix: MatrixMultiply_Mat, \
-Vector: MatrixMultiply_Vector)(x, y)
+Vector: MatrixMultiply_Vec)(x, y)
 
 typedef struct {
     int length;
@@ -17,13 +17,14 @@ typedef struct {
 } Matrix;
 
 void VectorInit(Vector* Vector, int Length);
-}
-
-Vector VectorMultply(Vector vector, float Scalar) ;
 
 Vector VectorAdd(Vector vector1, Vector vector2);
 
 Vector VectorSubtract(Vector vector1, Vector vector2);
+
+Vector VectorScale(Vector vector, float Scalar);
+
+void PrintVector(Vector vector);
 
 float DotProduct(Vector vector1, Vector vector2) ;
 
@@ -44,6 +45,6 @@ void MatrixPrint(Matrix Mat);
 
 // 행렬 곱
 Matrix MatrixMultiply_Mat(Matrix Mat1, Matrix Mat2);
-Matrix MatrixMultiply_Vector(Matrix Mat, Vector Vector);
+Vector MatrixMultiply_Vec(Matrix Mat, Vector Vector);
 
 #endif // MATRIX_LIBRARY_H

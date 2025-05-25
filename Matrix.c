@@ -10,7 +10,7 @@ void VectorInit(Vector* Vector, int Length) {
     }
 }
 
-Vector VectorMultply(Vector vector, float Scalar) {
+Vector VectorScale(Vector vector, float Scalar) {
     Vector result;
     VectorInit(&result, vector.length);
     for (int i = 0; i < vector.length; i++) {
@@ -26,6 +26,12 @@ Vector VectorAdd(Vector vector1, Vector vector2) {
         result.Vector[i] = vector1.Vector[i] + vector2.Vector[i];
     }
     return result;
+}
+
+void PrintVector(Vector vector) {
+    for (int i = 0; i < vector.length; i++) {
+        printf("(%f)\n", vector.Vector[i]);
+    }
 }
 
 Vector VectorSubtract(Vector vector1, Vector vector2) {
@@ -79,10 +85,11 @@ void MatrixEdit(Matrix *Mat, int row, int col, float value) {
 
 void MatrixPrint(Matrix Mat) {
     for (int i = 0; i < Mat.rows; i++) {
+        printf("[");
         for (int j = 0; j < Mat.cols; j++) {
             printf("%f ", Mat.matrix[i*Mat.cols+j]);
             }
-        printf("\n");
+        printf("]\n");
         }
 }
 
@@ -110,9 +117,9 @@ Vector MatrixMultiply_Vec(Matrix Mat1, Vector vector) {
         exit(1);
     }
     VectorInit(&result, Mat1.rows);
-    for (int i = 0; i < Mat1.cols; i++) {
+    for (int i = 0; i < Mat1.rows; i++) {
         for (int j = 0; j < vector.length; j++) {
-            result.Vector[j] += vector.Vector[i] * Mat1.matrix[j*Mat1.cols + i];
+            result.Vector[i] += vector.Vector[i] * Mat1.matrix[i*Mat1.rows + j];
         }
     }
     return result;

@@ -10,5 +10,5 @@ void InitAI(AI* Ai, int* Hiddenlayer_Neuron_Number) {
             MatrixInit(&Ai->Weights[i], Ai->Hiddenlayer_Neuron_Number[i + 1],
                        (i == 0) ? Ai->input_Number : Ai->Hiddenlayer_Neuron_Number[i]);
         }
-    Ai->Biases = malloc((Ai->Hiddenlayer_Number + 1) * sizeof());
+    Ai->Biases = malloc((Ai->Hiddenlayer_Number + 1) * sizeof(Vector));
 }
