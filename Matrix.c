@@ -14,34 +14,39 @@ void MatrixInit(Matrix *Mat, int rows, int cols) {
     }
 }
 
-int MatrixValue(Matrix *Mat, int row, int col) {
-    return Mat->matrix[row*Mat->cols+col];
+int MatrixValue(Matrix Mat, int row, int col) {
+    return Mat.matrix[row*Mat.cols+col];
 }
 
 void MatrixEdit(Matrix *Mat, int row, int col, int value) {
+    if (row < 0 || row >= Mat->rows || col < 0 || col >= Mat->cols) {
+        exit(1);
+    }
     Mat->matrix[row*Mat->cols+col] = value;
 }
 
-void PrintMatrix(Matrix *Mat) {
-    for (int i = 0; i < Mat->rows; i++) {
-        for (int j = 0; j < Mat->cols; j++) {
-            printf("%d ", Mat->matrix[i*Mat->cols+j]);
+void MatrixPrint(Matrix Mat) {
+    for (int i = 0; i < Mat.rows; i++) {
+        for (int j = 0; j < Mat.cols; j++) {
+            printf("%d ", Mat.matrix[i*Mat.cols+j]);
         }
         printf("\n");
     }
 }
 
-Matrix MultiplyMatrix(Matrix *Mat1, Matrix *Mat2) {
+Matrix MatrixMultiply(Matrix Mat1, Matrix Mat2) {
     Matrix result;
-    if (Mat1->cols != Mat2->rows) {
+    if (Mat1.cols != Mat2.rows) {
         printf("Matrix Multiplication Error");
         exit(1);
     }
-    MatrixInit(&result, Mat1->rows, Mat1->cols);
-
-    for (int i = 0; i < Mat1->rows; i++) {
-        for (int j = 0; j < Mat2->cols; j++) {
-
+    MatrixInit(&result, Mat1.rows, Mat2.cols);
+    for (int i = 0; i < Mat2.cols; i++) {
+        for (int j = 0; j < Mat2.rows; j++) {
+            for (int k = 0; k < Mat1.cols; k++) {
+                result.matrix[i + j*Mat2.cols] += MatrixValue(Mat1, j, k) * MatrixValue(Mat2, k, j);
+            }
         }
     }
+    return result;
 }
