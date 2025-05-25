@@ -13,7 +13,7 @@ typedef struct {
 typedef struct {
     int rows;
     int cols;
-    int *matrix;
+    float *matrix;
 } Matrix;
 
 void VectorInit(Vector* Vector, int Length);
@@ -37,12 +37,13 @@ void MatrixFree(Matrix *Mat);
 int MatrixValue(Matrix Mat, int row, int col);
 
 // 행렬의 특정 위치 값을 수정
-void MatrixEdit(Matrix *Mat, int row, int col, int value);
+void MatrixEdit(Matrix *Mat, int row, int col, float value);
 
 // 행렬 출력
 void MatrixPrint(Matrix Mat);
 
 // 행렬 곱
-Matrix MatrixMultiply(Matrix Mat1, Matrix Mat2);
+Matrix MatrixMultiply_Mat(Matrix Mat1, Matrix Mat2);
+Matrix MatrixMultiply_Vector(Matrix Mat, Vector Vector);
 
 #endif // MATRIX_LIBRARY_H

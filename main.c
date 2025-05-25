@@ -16,8 +16,10 @@ int main() {
     for (int i = 0; i < 2; i++) {
         for (int j = 0; j < 2; j++) {
             MatrixEdit(&Mat2, i, j, i-j+1);
-        }
+            }
     }
+    Vector vector;
+
     MatrixPrint(Mat2);
     Matrix Mat3 = MatrixMultiply(Mat1, Mat2);
     MatrixPrint(Mat3);
