@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "Matrix.c"
+#include "Matrix.h"
 
 int main() {
     Matrix Mat1, Mat2;

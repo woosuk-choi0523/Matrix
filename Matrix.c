@@ -50,11 +50,11 @@ Matrix MatrixMultiply(Matrix Mat1, Matrix Mat2) {
         exit(1);
     }
     MatrixInit(&result, Mat1.rows, Mat2.cols);
-    for (int i = 0; i < Mat2.cols; i++) {
-        for (int j = 0; j < Mat2.rows; j++) {
-            for (int k = 0; k < Mat1.cols; k++) {
-                result.matrix[i + j*Mat2.cols] += MatrixValue(Mat1, j, k) * MatrixValue(Mat2, k, j);
-            }
+    for (int i = 0; i < Mat1.rows; i++) {
+        for (int j = 0; j < Mat2.cols; j++) {
+         for (int k = 0; k < Mat1.cols; k++) {
+             result.matrix[i*Mat2.cols+j] += Mat1.matrix[i*Mat1.cols + k] * Mat2.matrix[k*Mat2.cols + j];
+         }
         }
     }
     return result;
