@@ -10,6 +10,10 @@ void VectorInit(Vector* Vector, int Length) {
     }
 }
 
+void VectorFree(Vector* vector) {
+    free(vector->Vector);
+}
+
 Vector VectorScale(Vector vector, float Scalar) {
     Vector result;
     VectorInit(&result, vector.length);

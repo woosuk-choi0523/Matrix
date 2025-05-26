@@ -11,7 +11,7 @@ typedef struct{
     int* Hiddenlayer_Neuron_Number;
     int output_Number;
     Matrix* Weights;
-    Matrix* Biases;
+    Vector* Biases;
 }AI;
 
 #endif //AI_H
