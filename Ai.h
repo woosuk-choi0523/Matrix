@@ -16,7 +16,7 @@ void FreeAI(AI* Ai);
 
 void SetWeights(AI* Ai, Matrix matrix, int Weight_Number);
 
-void SetBiases(AI* Ai, Matrix matrix, int Bias_Number);
+void SetBiases(AI* Ai, Vector vector, int Bias_Number);
 
 double Sigmoid(float x);
 

@@ -29,16 +29,21 @@ void FreeAI(AI* Ai) {
     }
     free(Ai->Weights);
     free(Ai->Biases);
-    for (int i = 0; i < Ai->Hiddenlayer_Number + 1; i++) {
-        InitVector(&Ai->Biases[i], Ai->Hiddenlayer_Neuron_Number[i]);
-    }
 }
 
 void SetWeights(AI* Ai, Matrix matrix, int Weight_Number) {
+    if (Weight_Number > Ai->Hiddenlayer_Number) {
+        printf("Weight_Number > Ai->Hiddenlayer_Number\nError in SetWeights");
+        exit(EXIT_FAILURE);
+    }
     Ai->Weights[Weight_Number] = matrix;
 }
 
 void SetBiases(AI* Ai, Vector vector, int Bias_Number) {
+    if (Ai->Hiddenlayer_Number != Bias_Number) {
+        printf("Error in SetBiases\n");
+        exit(EXIT_FAILURE);
+    }
     Ai->Biases[Bias_Number] = vector;
 }
 
@@ -47,6 +52,10 @@ double Sigmoid(float x) {
 }
 
 Vector Forward(AI* Ai, Vector input) {
+    if (Ai->input_Number != input.length) {
+        printf("Error in Forward\nInput Vector length > Ai input number");
+        exit(EXIT_FAILURE);
+    }
     Vector output;
     InitVector(&output, Ai->output_Number);
     for (int i = 0; i < Ai->Hiddenlayer_Number; i++) {

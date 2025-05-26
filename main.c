@@ -4,13 +4,12 @@
 #include "Matrix.h"
 #include "Ai.h"
 
-
 int main() {
-
+    printf("Hello World!\n");
 }
 
 
-/** Test Matrix
+/**
 int main() {
     Matrix Mat1, Mat2;
     InitMatrix(&Mat1,3,2);
@@ -42,5 +41,4 @@ int main() {
     PrintVector(vector);
     return 0;
 }
-
 **/
