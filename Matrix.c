@@ -10,8 +10,8 @@ void VectorInit(Vector* Vector, int Length) {
     }
 }
 
-void VectorFree(Vector* Vector) {
-    free(Vector->Vector);
+void VectorFree(Vector* vector) {
+    free(vector->Vector);
 }
 
 Vector VectorScale(Vector vector, float Scalar) {

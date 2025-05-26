@@ -18,6 +18,18 @@ void InitAI(AI* Ai, int input_Number, int Hiddenlayer_Number ,int* Hiddenlayer_N
         }
     Ai->Biases = malloc((Ai->Hiddenlayer_Number + 1) * sizeof(Vector));
     for (int i = 0; i < Ai->Hiddenlayer_Number + 1; i++) {
+        VectorInit(&Ai->Biases[i], Ai->Hiddenlayer_Number[i]);
+    }
+}
+
+void FreeAI(AI* Ai) {
+    for (int i = 0; i < Ai->Hiddenlayer_Number + 1; i++) {
+        MatrixFree(&Ai->Weights[i]);
+        VectorFree(&Ai->Biases[i]);
+    }
+    free(Ai->Weights);
+    free(Ai->Biases);
+    for (int i = 0; i < Ai->Hiddenlayer_Number + 1; i++) {
         VectorInit(&Ai->Biases[i], Ai->Hiddenlayer_Neuron_Number[i]);
     }
 }

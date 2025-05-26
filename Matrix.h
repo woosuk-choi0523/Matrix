@@ -18,6 +18,8 @@ typedef struct {
 
 void VectorInit(Vector* Vector, int Length);
 
+void VectorFree(Vector* vector);
+
 Vector VectorAdd(Vector vector1, Vector vector2);
 
 Vector VectorSubtract(Vector vector1, Vector vector2);
