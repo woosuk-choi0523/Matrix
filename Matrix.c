@@ -269,7 +269,7 @@ void PrintMatrix(Matrix Mat) {
  * @warning 반환된 행렬은 함수 내부에서 동적으로 메모리가 할당되므로,
  * 사용 후 반드시 FreeMatrix() 함수로 해제해야 합니다.
  */
-Matrix MatrixMultiply_Mat(Matrix Mat1, Matrix Mat2) {
+Matrix MultiplyMatrix_Mat(Matrix Mat1, Matrix Mat2) {
     Matrix result;
     if (Mat1.cols != Mat2.rows) {
         printf("Matrix Multiplication Error");
@@ -299,7 +299,7 @@ Matrix MatrixMultiply_Mat(Matrix Mat1, Matrix Mat2) {
 * @warning 반환된 벡터는 함수 내부에서 동적으로 메모리가 할당되므로,
 * 사용 후 반드시 FreeVector() 함수로 해제해야 합니다.
 */
-Vector MatrixMultiply_Vec(Matrix Mat1, Vector vector) {
+Vector MultiplyMatrix_Vec(Matrix Mat1, Vector vector) {
     Vector result;
     if (Mat1.cols != vector.length) {
         printf("Matrix Multiplication Error");

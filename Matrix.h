@@ -4,9 +4,9 @@
 // _Generic 매크로를 사용하여 오버로딩된 MatrixMultiply 함수를 제공합니다.
 // 첫 번째 인자(x)는 Matrix여야 하며, 두 번째 인자(y)의 타입에 따라
 // MatrixMultiply_Mat 또는 MatrixMultiply_Vec 함수가 호출됩니다.
-#define  MatrixMultiply(x, y)_Generic((y), \
-Matrix: MatrixMultiply_Mat, \
-Vector: MatrixMultiply_Vec)(x, y)
+#define  MultiplyMatrix(x, y)_Generic((y), \
+Matrix: MultiplyMatrix_Mat, \
+Vector: MultiplyMatrix_Vec)(x, y)
 
 /**
  * @brief 벡터를 표현하는 구조체입니다.
@@ -121,13 +121,13 @@ void PrintMatrix(Matrix Mat);
  * @param Mat2 두 번째 Matrix 구조체입니다.
  * @return 곱셈 결과로 생성된 새로운 Matrix 구조체입니다.
  */
-Matrix MatrixMultiply_Mat(Matrix Mat1, Matrix Mat2);
+Matrix MultiplyMatrix_Mat(Matrix Mat1, Matrix Mat2);
 /**
  * @brief 행렬과 벡터의 곱셈을 수행하여 새로운 벡터를 반환합니다.
  * @param Mat 행렬 구조체입니다.
  * @param Vector 벡터 구조체입니다.
  * @return 곱셈 결과로 생성된 새로운 Vector 구조체입니다.
  */
-Vector MatrixMultiply_Vec(Matrix Mat, Vector Vector);
+Vector MultiplyMatrix_Vec(Matrix Mat, Vector Vector);
 
 #endif // MATRIX_LIBRARY_H

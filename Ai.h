@@ -18,7 +18,7 @@ void SetWeights(AI* Ai, Matrix matrix, int Weight_Number);
 
 void SetBiases(AI* Ai, Vector vector, int Bias_Number);
 
-double Sigmoid(float x);
+float Sigmoid(float x);
 
 Vector Forward(AI* Ai, Vector input);
 

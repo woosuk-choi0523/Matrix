@@ -4,10 +4,10 @@
 #include "Matrix.h"
 #include "Ai.h"
 
-int main() {
-    printf("Hello World!\n");
-}
 
+int main() {
+
+}
 
 /**
 int main() {
@@ -34,10 +34,10 @@ int main() {
     vector.Vector[1] = 3;
     PrintVector(vector);
     printf("\n");
-    Matrix Mat3 = MatrixMultiply(Mat1, Mat2);
+    Matrix Mat3 = MultiplyMatrix(Mat1, Mat2);
     PrintMatrix(Mat3);
     printf("\n");
-    vector = MatrixMultiply(Mat1, vector);
+    vector = MultiplyMatrix(Mat1, vector);
     PrintVector(vector);
     return 0;
 }
