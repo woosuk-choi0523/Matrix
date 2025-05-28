@@ -22,7 +22,7 @@ typedef struct {
 typedef struct {
     int rows;       /**< 행렬의 행(row) 개수입니다. */
     int cols;       /**< 행렬의 열(column) 개수입니다. */
-    float *matrix;  /**< 행렬 요소를 저장하는 동적 할당된 1차원 배열에 대한 포인터입니다. */
+    float *Matrix;  /**< 행렬 요소를 저장하는 동적 할당된 1차원 배열에 대한 포인터입니다. */
 } Matrix;
 
 /**

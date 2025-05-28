@@ -169,7 +169,7 @@ float DotProduct(Vector vector1, Vector vector2) {
 void InitMatrix(Matrix *Mat, int rows, int cols) {
     Mat->rows = rows;
     Mat->cols = cols;
-    Mat->matrix = (float *)malloc(rows * cols * sizeof(float));
+    Mat->Matrix = (float *)malloc(rows * cols * sizeof(float));
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             EditMatrix(Mat, i, j, 0);
@@ -186,9 +186,9 @@ void InitMatrix(Matrix *Mat, int rows, int cols) {
  * @param Mat 메모리를 해제할 Matrix 구조체에 대한 포인터입니다.
  */
 void FreeMatrix(Matrix *Mat) {
-    if (Mat->matrix != NULL) {
-        free(Mat->matrix);
-        Mat->matrix = NULL;
+    if (Mat->Matrix != NULL) {
+        free(Mat->Matrix);
+        Mat->Matrix = NULL;
         }
     Mat->rows = 0;
     Mat->cols = 0;
@@ -204,7 +204,7 @@ void FreeMatrix(Matrix *Mat) {
  * @return 해당 행렬 위치의 값(int)입니다. (현재 float 타입 반환이 더 적절해 보입니다).
  */
 float GetMatrixValue(Matrix Mat, int row, int col) {
-    if (Mat.matrix == NULL) {
+    if (Mat.Matrix == NULL) {
         printf("Matrix is empty\n");
         exit(EXIT_FAILURE);
     }
@@ -216,7 +216,7 @@ float GetMatrixValue(Matrix Mat, int row, int col) {
         printf("Column index mismatch\n");
         exit(EXIT_FAILURE);
     }
-    return Mat.matrix[row*Mat.cols+col];
+    return Mat.Matrix[row*Mat.cols+col];
 }
 
 /**
@@ -235,7 +235,7 @@ void EditMatrix(Matrix *Mat, int row, int col, float value) {
         printf("Matrix out of bounds\n");
         exit(1);
     }
-    Mat->matrix[row*Mat->cols+col] = value;
+    Mat->Matrix[row*Mat->cols+col] = value;
 }
 
 /**
@@ -249,7 +249,7 @@ void PrintMatrix(Matrix Mat) {
     for (int i = 0; i < Mat.rows; i++) {
         printf("[");
         for (int j = 0; j < Mat.cols; j++) {
-            printf("%f ", Mat.matrix[i*Mat.cols+j]);
+            printf("%f ", Mat.Matrix[i*Mat.cols+j]);
             }
         printf("]\n");
         }
@@ -279,7 +279,7 @@ Matrix MultiplyMatrix_Mat(Matrix Mat1, Matrix Mat2) {
     for (int i = 0; i < Mat1.rows; i++) {
         for (int j = 0; j < Mat2.cols; j++) {
             for (int k = 0; k < Mat1.cols; k++) {
-                result.matrix[i*Mat2.cols+j] += Mat1.matrix[i*Mat1.cols + k] * Mat2.matrix[k*Mat2.cols + j];
+                result.Matrix[i*Mat2.cols+j] += Mat1.Matrix[i*Mat1.cols + k] * Mat2.Matrix[k*Mat2.cols + j];
                 }
             }
         }
@@ -308,7 +308,7 @@ Vector MultiplyMatrix_Vec(Matrix Mat1, Vector vector) {
     InitVector(&result, Mat1.rows);
     for (int i = 0; i < Mat1.rows; i++) {
         for (int j = 0; j < Mat1.cols; j++) {
-            result.Vector[i] += vector.Vector[j] * Mat1.matrix[i*Mat1.cols + j];
+            result.Vector[i] += vector.Vector[j] * Mat1.Matrix[i*Mat1.cols + j];
         }
     }
     return result;
