@@ -10,4 +10,4 @@ add_library(Matrix STATIC Matrix.c Ai.c)
 add_executable(MatrixApp main.c)
 
 # 실행 파일에 라이브러리 링크
-target_link_libraries(MatrixApp PRIVATE Matrix)
+target_link_libraries(MatrixApp Matrix m)
