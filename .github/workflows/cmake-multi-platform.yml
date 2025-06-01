@@ -47,7 +47,7 @@ jobs:
           - os: ubuntu-latest
             c_compiler: cl
           - os: macos-latest
-            c_compiler: gcc  # 기본적으로 macOS에는 gcc가 없음
+            c_compiler: gcc, cl  # 기본적으로 macOS에는 gcc가 없음
 
     steps:
     - uses: actions/checkout@v4
