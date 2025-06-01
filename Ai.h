@@ -33,4 +33,6 @@ float Sigmoid_prime(float x);
 
 Vector Forward(AI* Ai, Vector input);
 
+AI BackPropagation(AI *ai, Vector input, Vector target_output);
+
 #endif //AI_H

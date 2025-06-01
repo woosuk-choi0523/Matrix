@@ -153,6 +153,50 @@ float DotProduct(Vector vector1, Vector vector2) {
     return result;
 }
 
+Vector CopyVector(Vector v) {
+    Vector new_v;
+    InitVector(&new_v, v.length);
+    for (int i = 0; i < v.length; i++) {
+        new_v.Vector[i] = v.Vector[i];
+    }
+    return new_v;
+}
+
+Vector ElementWiseMultiplyVector(Vector v1, Vector v2) {
+    if (v1.length != v2.length) {
+        printf("Error in ElementWiseMultiplyVector: Vector lengths mismatch.\n");
+        exit(EXIT_FAILURE);
+    }
+    Vector result;
+    InitVector(&result, v1.length);
+    for (int i = 0; i < v1.length; i++) {
+        result.Vector[i] = v1.Vector[i] * v2.Vector[i];
+    }
+    return result;
+}
+
+Matrix TransposeMatrix(Matrix m) {
+    Matrix t_m;
+    InitMatrix(&t_m, m.cols, m.rows);
+    for (int i = 0; i < m.rows; i++) {
+        for (int j = 0; j < m.cols; j++) {
+            EditMatrix(&t_m, j, i, GetMatrixValue(m, i, j));
+        }
+    }
+    return t_m;
+}
+
+Matrix OuterProduct(Vector v_col, Vector v_row_form) {
+    Matrix result;
+    InitMatrix(&result, v_col.length, v_row_form.length);
+    for (int i = 0; i < v_col.length; i++) {
+        for (int j = 0; j < v_row_form.length; j++) {
+            EditMatrix(&result, i, j, v_col.Vector[i] * v_row_form.Vector[j]);
+        }
+    }
+    return result;
+}
+
 /**
  * @brief 행렬 구조체를 초기화하고 메모리를 할당합니다.
  *

@@ -83,6 +83,12 @@ float DotProduct(Vector vector1, Vector vector2) ;
  * @param rows 행렬의 행(row) 개수입니다.
  * @param cols 행렬의 열(column) 개수입니다.
  */
+
+Vector CopyVector(Vector v);
+Vector ElementWiseMultiplyVector(Vector v1, Vector v2); // v_out[i] = v1[i] * v2[i]
+Matrix TransposeMatrix(Matrix m);
+Matrix OuterProduct(Vector v_col, Vector v_row_form); // result_ij = v_col_i * v_row_form_j
+
 void InitMatrix(Matrix *Mat, int rows, int cols);
 
 /**
