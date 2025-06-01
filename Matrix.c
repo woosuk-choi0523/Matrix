@@ -169,7 +169,7 @@ float DotProduct(Vector vector1, Vector vector2) {
 void InitMatrix(Matrix *Mat, int rows, int cols) {
     Mat->rows = rows;
     Mat->cols = cols;
-    Mat->Matrix = (float *)malloc(rows * cols * sizeof(float));
+    Mat->Matrix = malloc(rows * cols * sizeof(float));
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             EditMatrix(Mat, i, j, 0);
